@@ -4,10 +4,14 @@ import { AuthGuard, KeycloakConnectModule, PolicyEnforcementMode, ResourceGuard,
 import { APP_GUARD } from '@nestjs/core';
 import { AuthModule } from './auth/auth.module';
 import { TaskModule } from './task/task.module';
+import { HealthModule } from './health/health.module';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
+    HttpModule,
+    HealthModule,
     KeycloakConnectModule.register({
       authServerUrl: process.env.KEYCLOAK_URL,
       realm: process.env.KEYCLOAK_REALM,

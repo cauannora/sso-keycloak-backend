@@ -18,11 +18,13 @@ services:
       KC_HEALTH_ENABLED: true
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
-    command: start-dev
+    command: start-dev --health-enabled=true
     depends_on:
       - keycloakdb
     ports:
       - 8080:8080
+      - 9000:9000
+
 
   keycloakdb:
     image: postgres:16.3
